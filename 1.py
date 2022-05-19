@@ -42,7 +42,7 @@ alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n"
 consonants = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z"]
 vowels = ["a", "e", "i", "o", "u"]
 
-
+1
 
 for domain in attemptting
     driver.find_element_by_xpath('//*[@id="mat-input-0"]').click()
