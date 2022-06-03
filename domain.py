@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium_stealth import stealth
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver import ActionChains
+from openpyxl import Workbook
 import time
 
 driver = webdriver.Chrome()
@@ -17,26 +18,55 @@ stealth(driver,
         fix_hairline=True,
         )
 
-# jinleedvp@gmail.com
-# December12@
+# jinleedvp0@gmail.com
+# January01)!
 # Get a new domain
-time.sleep(30)
+# driver.find_element_by_xpath('').click()
+
+driver.find_element_by_xpath('/html/body/div[2]/section[1]/div/section/div[1]/div[3]/form/input').click()
+driver.find_element_by_xpath('/html/body/div[2]/section[1]/div/section/div[1]/div[3]/form/input').send_keys("test")
+driver.find_element_by_xpath('/html/body/div[2]/section[1]/div/section/div[1]/div[3]/form/button').click()
+time.sleep(5)
 
 alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 consonants = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z"]
 vowels = ["a", "e", "i", "o", "u"]
+
+wb = Workbook() # new workbook
+ws = wb.active # call a sheet
+ws_y=1
 
 for char1 in consonants:
     for char2 in vowels:
         for char3 in consonants:
             for char4 in vowels:
                 for char5 in consonants:
+                    nsearch = char1 + char2 + char3 + char4 + char5 + ".com"
                     driver.find_element_by_xpath('//*[@id="mat-input-0"]').click()
-                    ActionChains(driver).send_keys(Keys.BACKSPACE).send_keys(Keys.BACKSPACE).send_keys(Keys.BACKSPACE).send_keys(Keys.BACKSPACE).send_keys(Keys.BACKSPACE).send_keys(Keys.BACKSPACE).send_keys(Keys.BACKSPACE).send_keys(Keys.BACKSPACE).send_keys(Keys.BACKSPACE).send_keys(Keys.BACKSPACE).perform()# open in new tab
-                    driver.find_element_by_xpath('//*[@id="mat-input-0"]').send_keys(char1 + char2 + char3 + char4 + char5 + ".com")
-                    driver.find_element_by_xpath('//*[@id="domainsAppContent"]/main/dreg-router-outlet/div/search-root/responsive-centered-container/div/div/search-bar-container/findy-bar-container/div/search-bar/findy-bar/form/button[1]').click()
+                    ActionChains(driver).send_keys(Keys.BACKSPACE).send_keys(Keys.BACKSPACE).send_keys(Keys.BACKSPACE).send_keys(Keys.BACKSPACE).send_keys(Keys.BACKSPACE).send_keys(Keys.BACKSPACE).send_keys(Keys.BACKSPACE).send_keys(Keys.BACKSPACE).send_keys(Keys.BACKSPACE).send_keys(Keys.BACKSPACE).perform()# delete previous search text
+                    driver.find_element_by_xpath('//*[@id="mat-input-0"]').send_keys(nsearch)# combination search text
+                    driver.find_element_by_xpath('//*[@id="domainsAppContent"]/main/dreg-router-outlet/div/search-root/responsive-centered-container/div/div/search-bar-container/findy-bar-container/div/search-bar/findy-bar/form/button[1]').click()# search
+                    print(nsearch)
                     time.sleep(5)
-                    try:# Add to favorites
-                        driver.find_element_by_xpath('//*[@id="mat-tab-content-0-0"]/div/related-search-results/exact-match-card/div/search-result-card-header/search-result-card-header-desktop/mat-card/div/div[4]/row-add-to-favorites/div/button').click()
+                    try:
+                        driver.find_element_by_xpath('//*[@id="mat-tab-content-0-0"]/div/related-search-results/exact-match-card/div/search-result-card-header/search-result-card-header-desktop/mat-card/div/div[2]/row-tags/dreg-tag').text
+                        try:
+                            adomain = driver.find_element_by_xpath('//*[@id="mat-tab-content-0-0"]/div/related-search-results/exact-match-card/div/search-result-card-header/search-result-card-header-desktop/mat-card/div/div[2]/div/search-result-card-domain-name/span').text
+                            ws.cell(column=1, row=ws_y, value=adomain)
+                        except:
+                            ws.cell(column=1, row=ws_y, value=nsearch+"!")
+                        try:
+                            aprice = driver.find_element_by_xpath('//*[@id="mat-tab-content-0-0"]/div/related-search-results/exact-match-card/div/search-result-card-header/search-result-card-header-desktop/mat-card/div/div[3]/row-price/domain-price/span[1]').text
+                            ws.cell(column=2, row=ws_y, value=aprice)
+                        except:
+                            pass
+                        wb.save("1.xlsx")
+                        ws_y += 1
+                        print("saved")
                     except:
                         pass
+
+                    # try:# Add to favorites
+                    #     driver.find_element_by_xpath('//*[@id="mat-tab-content-0-0"]/div/related-search-results/exact-match-card/div/search-result-card-header/search-result-card-header-desktop/mat-card/div/div[4]/row-add-to-favorites/div/button').click()
+                    # except:
+                    #     pass
