@@ -22,24 +22,27 @@ driver.maximize_window()
 # -------------------------------------------------------------------------login
 
 driver.find_element_by_xpath('//*[@id="ShopifyMainNav"]/ul[3]/li[3]/a').click()
+time.sleep(4)
 driver.find_element_by_xpath('//*[@id="account_email"]').click()
 driver.find_element_by_xpath('//*[@id="account_email"]').send_keys("jinleeyag@gmail.com")
 driver.find_element_by_xpath('//*[@id="body-content"]/div[2]/div/div/div/div/div[2]/div/form/button').click()
-time.sleep(3)
+time.sleep(4)
 driver.find_element_by_xpath('//*[@id="account_password"]').click()
 driver.find_element_by_xpath('//*[@id="account_password"]').send_keys("March03)#")
 driver.find_element_by_xpath('//*[@id="login_form"]/div[2]/ul/button').click()
-time.sleep(15)
+time.sleep(20)
 
 
 
 
-
-
-driver.find_element_by_xpath('//*[@id="AppFrameNav"]/nav/div[2]/ul[1]/li[3]/div[1]/a').click()
+driver.find_element_by_xpath('//*[@id="AppFrameNav"]/nav/div[2]/ul[1]/li[3]/div[1]/a').click()# Products
 time.sleep(3)
-driver.find_element_by_xpath('//*[@id="AppFrameMain"]/div/div/div[1]/div/div[2]/div[2]/a').click()
+driver.find_element_by_xpath('//*[@id="AppFrameMain"]/div/div/div[1]/div/div[2]/div[2]/a').click()# Add product
 time.sleep(3)
+
+
+driver.find_element_by_xpath('//*[@id="PolarisTextField17"]').click()# Title
+driver.find_element_by_xpath('//*[@id="PolarisTextField17"]').send_keys(ptitle)
 
 
 
