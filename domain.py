@@ -54,26 +54,17 @@ for char1 in twosyl:
     ActionChains(driver).send_keys(Keys.BACKSPACE).send_keys(Keys.BACKSPACE).send_keys(Keys.BACKSPACE).send_keys(Keys.BACKSPACE).send_keys(Keys.BACKSPACE).send_keys(Keys.BACKSPACE).send_keys(Keys.BACKSPACE).send_keys(Keys.BACKSPACE).send_keys(Keys.BACKSPACE).send_keys(Keys.BACKSPACE).send_keys(Keys.BACKSPACE).send_keys(Keys.BACKSPACE).send_keys(Keys.BACKSPACE).send_keys(Keys.BACKSPACE).send_keys(Keys.BACKSPACE).perform()# delete previous search text
     driver.find_element_by_xpath('//*[@id="mat-input-0"]').send_keys(nsearch)# combination search text
     driver.find_element_by_xpath('//*[@id="domainsAppContent"]/main/dreg-router-outlet/div/search-root/responsive-centered-container/div/div/search-bar-container/findy-bar-container/div/search-bar/findy-bar/form/button[1]').click()# search
-    print(nsearch)
     time.sleep(5)
     try:
-        driver.find_element_by_xpath('//*[@id="mat-tab-content-0-0"]/div/related-search-results/exact-match-card/div/search-result-card-header/search-result-card-header-desktop/mat-card/div/div[3]/row-price/domain-price/span[1]')
-        try:
-            adomain = driver.find_element_by_xpath('//*[@id="mat-tab-content-0-0"]/div/related-search-results/exact-match-card/div/search-result-card-header/search-result-card-header-desktop/mat-card/div/div[2]/div/search-result-card-domain-name/span').text
-            ws.cell(column=1, row=ws_y, value=adomain)
-        except:
-            ws.cell(column=1, row=ws_y, value=nsearch+"!")
-        try:
-            aprice = driver.find_element_by_xpath('//*[@id="mat-tab-content-0-0"]/div/related-search-results/exact-match-card/div/search-result-card-header/search-result-card-header-desktop/mat-card/div/div[3]/row-price/domain-price/span[1]').text
-            ws.cell(column=2, row=ws_y, value=aprice)
-        except:
-            pass
+        adomain = driver.find_element_by_xpath('//*[@id="mat-tab-content-0-0"]/div/related-search-results/exact-match-card/div/search-result-card-header/search-result-card-header-desktop/mat-card/div/div[2]/div/search-result-card-domain-name/span').text
+        ws.cell(column=1, row=ws_y, value=adomain)
+        aprice = driver.find_element_by_xpath('//*[@id="mat-tab-content-0-0"]/div/related-search-results/exact-match-card/div/search-result-card-header/search-result-card-header-desktop/mat-card/div/div[3]/row-price/domain-price/span[1]').text
+        ws.cell(column=2, row=ws_y, value=aprice)
         wb.save("1.xlsx")
         ws_y += 1
-        print("saved")
+        print(adomain + "saved")
     except:
         pass
-
                     # try:# Add to favorites
                     #     driver.find_element_by_xpath('//*[@id="mat-tab-content-0-0"]/div/related-search-results/exact-match-card/div/search-result-card-header/search-result-card-header-desktop/mat-card/div/div[4]/row-add-to-favorites/div/button').click()
                     # except:
