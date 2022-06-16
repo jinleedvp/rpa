@@ -38,7 +38,7 @@ consonants = [
     "t", "v", "w", "!reset",
     "x", "y", "z", "!reset",
     ]
-prefix = "f"
+prefix = "v"
 
 for char2 in vowels:
     for char3 in consonants:
