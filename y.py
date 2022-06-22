@@ -27,8 +27,8 @@ time.sleep(5)
 
 alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 # consonants = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z"]
-vowels = ["a", "e", "i", "o", "u"]
-test = ["a", "e", "!reset",]
+vowels1 = ["o", "u"]
+vowels2 = ["a", "e", "i", "o", "u"]
 consonants = [
     "b", "c", "d", "!reset",
     "f", "g", "h", "!reset",
@@ -40,7 +40,7 @@ consonants = [
     ]
 prefix = "y"
 
-for char2 in vowels:
+for char2 in vowels1:
     for char3 in consonants:
         if char3 == "!reset":
             driver.close()
@@ -61,7 +61,7 @@ for char2 in vowels:
             driver.find_element(By.XPATH, '/html/body/div[2]/section[1]/div/section/div[1]/div[3]/form/button').click()
             time.sleep(5)
         else:
-            for char4 in vowels:
+            for char4 in vowels2:
                 for char5 in alphabet:
                     nsearch = prefix + char2 + char3 + char4 + char5 + ".com"
                     driver.find_element(By.XPATH, '//*[@id="mat-input-0"]').click()

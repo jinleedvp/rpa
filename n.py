@@ -30,10 +30,6 @@ alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n"
 vowels = ["a", "e", "i", "o", "u"]
 test = ["a", "e", "!reset",]
 consonants = [
-    "b", "c", "d", "!reset",
-    "f", "g", "h", "!reset",
-    "j", "k", "l", "!reset",
-    "m", "n", "p", "!reset",
     "q", "r", "s", "!reset",
     "t", "v", "w", "!reset",
     "x", "y", "z", "!reset",
